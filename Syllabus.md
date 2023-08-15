@@ -27,6 +27,7 @@ _Both organisation have free git reposiotories and tools for developers:_
 ## 2.2 Create a SSH Key to have access to your repository with the CLI
 
 Setup the SSH key, so we can work with our remote git Repository.
+
 1. Create a new ssh key in your CLI (Terminal): `ssh-keygen`
 
 If you have a existing one, it will ask you to overwrite it. Be carful if you have that ssh key already in use somewhere else, if that is the case, answer with No and.
@@ -38,7 +39,7 @@ If you have a existing one, it will ask you to overwrite it. Be carful if you ha
 We need to copy the whole output line starting with "ssh-rsa" or "ssh-ed25519".
 It could look something like this: "ssh-rsa AAAAB3NzaC1yc2EAsadkNot4R3alKey user@host"
 
-4. Now we go to our git provider ex. Github and add the key to our account. 
+4. Now we go to our git provider ex. Github and add the key to our account.
 
 - Github:
   - Go to your Github account settings (https://github.com/settings/keys)
@@ -46,7 +47,7 @@ It could look something like this: "ssh-rsa AAAAB3NzaC1yc2EAsadkNot4R3alKey user
   - Click on "New SSH key"
     ![Alt text](media/screen-new-ssh-key.png)
   - Add a title ex. "My Computer"
-  ![Alt text](media/screen-add-ssh-key.png)
+    ![Alt text](media/screen-add-ssh-key.png)
   - Paste the key into the key field
   - Click on "Add SSH key"
 
@@ -122,6 +123,8 @@ Check if everything is correct:
 # 3. Git command practices
 
 Essential git commands to work with git. We'll use the CLI in the examples.
+
+[comment]: # "TODO: ADD also a section, how to open and add a new project to git with the CLI."
 
 - [3.1 Git clone](#31-git-clone)
 - [3.2 Git create branches](#32-git-create-branches)
@@ -319,6 +322,7 @@ What is Git Flow and how can we use it? Git Flow is a branching model / concept 
 ![Git Kraken Gitflow Graphic](https://www.gitkraken.com/wp-content/uploads/2021/06/gitflow-diagram-768x973-1.png)
 
 SRC: Image from Gitkraken
+
 ### Git Flow Branches
 
 Git Flow has a few different types of branches. We have the main branches and the supporting branches. In that we have different type of branches.:
@@ -351,12 +355,10 @@ The release branch is used to prepare a new release. They are tested and bugfixe
 
 The hotfix branch is used to fix bugs in the production. We create a hotfix branch from the master branch, fix the bug and merge them into the master branch and mirror it to the develop branch.
 
-
 ## 4.2 Trunk Based Development
-In trunk based development we only have one main branch (trunk). From this branch we create feature branches to work on and merge them directly back to  main. To successfully work with trunk based development, we tag events like releases, hotfixes etc. with git tags. They are used like an indexes in our git timeline. For this type of workflow we need to have a good automated CI/CD pipeline to test our code before it's pushed to production. Also it's essential to have a good review process, because we don't have a develop branch to test our code beforehand. A lot of big companies like Google, Facebook, Amazon etc. use this type of workflow, because they have a lot of developers and a lot of code to maintain. Also, if it's done right, it's a very fast way to work with git. 
 
+In trunk based development we only have one main branch (trunk). From this branch we create feature branches to work on and merge them directly back to main. To successfully work with trunk based development, we tag events like releases, hotfixes etc. with git tags. They are used like an indexes in our git timeline. For this type of workflow we need to have a good automated CI/CD pipeline to test our code before it's pushed to production. Also it's essential to have a good review process, because we don't have a develop branch to test our code beforehand. A lot of big companies like Google, Facebook, Amazon etc. use this type of workflow, because they have a lot of developers and a lot of code to maintain. Also, if it's done right, it's a very fast way to work with git.
 
 ~~## Additional Workflow and Pipelines~~
-
 
 ~~### Git Tag and Release~~
