@@ -243,7 +243,7 @@ If we are done working with the stash we also can remove all stashes with the fo
 
 `git stash clear`
 
-## 3.7 git merge
+## 3.7 Git merge
 
 The git merge command merges changes from a different branch into the current working branch. For example if we want to merge the branch "feature-branch" into the branch "develop", we need to switch to the branch "develop" and use the following command:
 
@@ -261,7 +261,7 @@ To regular workflow would look like this:
 6. Commit the changes. `git commit -m "commit message"`
 7. Push the changes to the remote repository. `git push`
 
-## 3.8 git resolve merge conflicts
+## 3.8 Git resolve merge conflicts
 
 Sometimes we have merge conflicts, if we merge a branch into another branch. That means, that the same file was changed in both branches we want to merge. That could happen, if we or one of our peers changed the same file in different branches. Git can't decide which changes to keep, so we need to resolve the merge conflict manually.
 
@@ -270,6 +270,8 @@ Sometimes we have merge conflicts, if we merge a branch into another branch. Tha
 To resolve merge conflicts with the CLI we need to open the file with the merge conflict and reslove the conflict manually. The file with the merge conflict looks like this:
 
 `git merge feature-branch`
+
+Recommened VS Code Extension: [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
 
 We could use the CLI for this but VS Code has a nice UI. We can open the file with the merge conflict in VS Code and resolve the merge conflict with the UI. The UI will display the conflicting changes on that line more or less like this:
 
@@ -294,6 +296,9 @@ To keep a clean commit History we can squash commits. For example if we have 10 
 
 The number after the tilde is the number of commits we want to squash. In the example above we squash the last 10 commits. After we run the command, we get a list of the commits we want to squash. We can change the order of the commits and squash them. To squash a commit we change the word "pick" to "squash" or "s". After we changed the commits we want to squash, we save the file and close it. Now we get a new file, where we can write the commit message for the new squashed commit. After we saved the file and closed it, we have squashed the commits.
 
+#### Github Squash and Merge
+![Github Squash and Merge](media/screen-merge-request.png)
+
 ## 3.10 git cherrypick
 
 Sometimes we want only certain commits from a branch to apply to another branch. Ex. a hotfix branch. We can use the git cherrypick command to apply only certain commits to another branch. To use the git cherrypick command we need the commit hash of the commit we want to apply to another branch.
@@ -304,7 +309,7 @@ We can get the commit hash with the following command:
 
 Then we get a list of all commits with the commit hash. We can copy the commit hash of the commit we want to apply to another branch. Then we switch to the branch we want to apply the commit to and use the following command:
 
-`git cherrypick commit-hash`
+`git cherry-pick commit-hash`
 
 Now we applied the commit to the current working branch. We can now commit and push the changes to the remote repository.
 
@@ -353,10 +358,10 @@ The hotfix branch is used to fix bugs in the production. We create a hotfix bran
 
 
 ## 4.2 Trunk Based Development
-In trunk based development we only have one main branch (trunk). From this branch we create feature branches to work on and merge them directly back to  main. To successfully work with trunk based development, we tag events like releases, hotfixes etc. with git tags. They are used like an indexes in our git timeline. For this type of workflow we need to have a good automated CI/CD pipeline to test our code before it's pushed to production. Also it's essential to have a good review process, because we don't have a develop branch to test our code beforehand. A lot of big companies like Google, Facebook, Amazon etc. use this type of workflow, because they have a lot of developers and a lot of code to maintain. Also, if it's done right, it's a very fast way to work with git. 
+In trunk based development we only have one main branch (trunk). From this branch we create feature branches to work on and merge them directly back to main. To successfully work with trunk based development, we tag events like releases, hotfixes etc. with git tags. They are used like an indexes in our git timeline. For this type of workflow we need to have a good automated CI/CD pipeline to test our code before it's pushed to production. Also it's essential to have a good review process, because we don't have a develop branch to test our code beforehand. A lot of big companies like Google, Facebook, Amazon etc. use this type of workflow, because they have a lot of developers and a lot of code to maintain. Also, if it's done right, it's a very fast way to work with git. 
 
 
-~~## Additional Workflow and Pipelines~~
+## Additional Workflow and Pipelines
 
 
 ~~### Git Tag and Release~~

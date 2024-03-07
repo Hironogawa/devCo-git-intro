@@ -1,5 +1,6 @@
 ### Push data to a new repository
-`git init` 
+
+`git init`
 
 `git add .`
 
@@ -48,7 +49,21 @@ Always add a message to your commit.
 
 or short version: `git push`
 
+### Check Repository Status
 
+`git status`
+
+### Get the latest changes from the remote repository
+
+`git pull`
+
+### Merge changes from another branch
+
+`git merge branch-name`
+
+### Fetch changes from the remote repository
+
+`git fetch`
 
 ## Use with caution
 
