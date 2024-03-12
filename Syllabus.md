@@ -27,6 +27,7 @@ _Both organisation have free git reposiotories and tools for developers:_
 ## 2.2 Create a SSH Key to have access to your repository with the CLI
 
 Setup the SSH key, so we can work with our remote git Repository.
+
 1. Create a new ssh key in your CLI (Terminal): `ssh-keygen`
 
 If you have a existing one, it will ask you to overwrite it. Be carful if you have that ssh key already in use somewhere else, if that is the case, answer with No and.
@@ -38,7 +39,7 @@ If you have a existing one, it will ask you to overwrite it. Be carful if you ha
 We need to copy the whole output line starting with "ssh-rsa" or "ssh-ed25519".
 It could look something like this: "ssh-rsa AAAAB3NzaC1yc2EAsadkNot4R3alKey user@host"
 
-4. Now we go to our git provider ex. Github and add the key to our account. 
+4. Now we go to our git provider ex. Github and add the key to our account.
 
 - Github:
   - Go to your Github account settings (https://github.com/settings/keys)
@@ -46,7 +47,7 @@ It could look something like this: "ssh-rsa AAAAB3NzaC1yc2EAsadkNot4R3alKey user
   - Click on "New SSH key"
     ![Alt text](media/screen-new-ssh-key.png)
   - Add a title ex. "My Computer"
-  ![Alt text](media/screen-add-ssh-key.png)
+    ![Alt text](media/screen-add-ssh-key.png)
   - Paste the key into the key field
   - Click on "Add SSH key"
 
@@ -297,6 +298,7 @@ To keep a clean commit History we can squash commits. For example if we have 10 
 The number after the tilde is the number of commits we want to squash. In the example above we squash the last 10 commits. After we run the command, we get a list of the commits we want to squash. We can change the order of the commits and squash them. To squash a commit we change the word "pick" to "squash" or "s". After we changed the commits we want to squash, we save the file and close it. Now we get a new file, where we can write the commit message for the new squashed commit. After we saved the file and closed it, we have squashed the commits.
 
 #### Github Squash and Merge
+
 ![Github Squash and Merge](media/screen-merge-request.png)
 
 ## 3.10 git cherrypick
@@ -324,6 +326,7 @@ What is Git Flow and how can we use it? Git Flow is a branching model / concept 
 ![Git Kraken Gitflow Graphic](https://www.gitkraken.com/wp-content/uploads/2021/06/gitflow-diagram-768x973-1.png)
 
 SRC: Image from Gitkraken
+
 ### Git Flow Branches
 
 Git Flow has a few different types of branches. We have the main branches and the supporting branches. In that we have different type of branches.:
@@ -356,12 +359,44 @@ The release branch is used to prepare a new release. They are tested and bugfixe
 
 The hotfix branch is used to fix bugs in the production. We create a hotfix branch from the master branch, fix the bug and merge them into the master branch and mirror it to the develop branch.
 
-
 ## 4.2 Trunk Based Development
-In trunk based development we only have one main branch (trunk). From this branch we create feature branches to work on and merge them directly back to main. To successfully work with trunk based development, we tag events like releases, hotfixes etc. with git tags. They are used like an indexes in our git timeline. For this type of workflow we need to have a good automated CI/CD pipeline to test our code before it's pushed to production. Also it's essential to have a good review process, because we don't have a develop branch to test our code beforehand. A lot of big companies like Google, Facebook, Amazon etc. use this type of workflow, because they have a lot of developers and a lot of code to maintain. Also, if it's done right, it's a very fast way to work with git. 
 
+In trunk based development we only have one main branch (trunk). From this branch we create feature branches to work on and merge them directly back to main. To successfully work with trunk based development, we tag events like releases, hotfixes etc. with git tags. They are used like an indexes in our git timeline. For this type of workflow we need to have a good automated CI/CD pipeline to test our code before it's pushed to production. Also it's essential to have a good review process, because we don't have a develop branch to test our code beforehand. A lot of big companies like Google, Facebook, Amazon etc. use this type of workflow, because they have a lot of developers and a lot of code to maintain. Also, if it's done right, it's a very fast way to work with git.
 
-## Additional Workflow and Pipelines
+### Git Tag and Release
 
+To tag a release we use the following command:
 
-~~### Git Tag and Release~~
+`git tag -a v1.0 -m "Release 1.0"`
+
+Let's break down the command:
+
+- `git tag` is the command to tag a release
+- `-a` is the flag to create an annotated tag
+- `v1.0` is the tag name
+- `-m` is the flag to add a message to the tag
+- `"Release 1.0"` is the message of the tag
+
+After tagging the release we need to push the tag to the remote repository with the following command:
+
+`git push origin v1.0`
+
+### How to use Git Tags
+
+We can use git tags to checkout a specific release. For example if we want to checkout the release 1.0, we use the following command:
+
+`git checkout <tag_name>`
+
+Now you are in the release 1.0, but you are in a detached head state. That means you are not in a branch. If you want to work on the release 1.0, you need to create a new branch from the tag with the following command:
+
+`git checkout -b release-1.0`
+
+Now you are in the release 1.0 branch and you can work on the release 1.0.
+
+#### Delete a Tag
+If we want to delete a tag, we use the following command:
+`git tag -d v1.0`
+
+After we deleted the tag, we need to remove the tag from the remote repository with the following command:
+`git push origin --delete v1.0`
+
